@@ -1,0 +1,15 @@
+version: '3.7'  
+services:  
+  python:  
+    # appディレクトリの中から`Dockerfile`を探す  
+    build: .
+    # サービス起動後に入力されるコマンドを設定  
+    # command: python manage.py runserver 0.0.0.0:8000  
+    # データを永続化させる場合の設定。`host:container`でパスを記載  
+    volumes:  
+        - .:/usr/src/app 
+    # 開放するポートを指定 
+    ports:  
+        - 8000:8000 
+    tty: true
+    stdin_open: true

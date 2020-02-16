@@ -1,0 +1,52 @@
+<!DOCTYPE 
+html>
+<html lang='ja'>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Worker List</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>性別</th>
+        <th>誕生日</th>
+ 
+        
+      </tr>
+    </thead>
+    <ul class="nav" id="side-menu">
+        <li><a href="/worker_list/"><i class="fa fa-bar-chart" aria-hidden="true"></i>  Worker一覧</a></li>
+        <li><a href="/logout/"><i class="fa fa-bar-chart" aria-hidden="true"></i>  ログアウト</a></li>
+      </ul>
+    <tbody>
+        {% for worker in workers %}
+        <tr>
+          <td>{{worker.id}}</td>
+          <td>{{worker.person.name}}</td>
+          <td>{{worker.person.sex}}</td>
+          <td>{{worker.person.birthday}}</td>
+        </tr>
+        <script>
+            $(document).ready(function() {
+                $('#worker-list-table').DataTable({
+                    responsive: true,
+                    // sort機能の無効化
+                    ordering: false,
+                    // ページの表示件数を変更する
+                    displayLength: 20,
+                });
+            });
+          </script>
+        {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

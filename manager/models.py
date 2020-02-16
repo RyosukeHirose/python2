@@ -1,7 +1,10 @@
+from django.contrib.auth.models import AbstractBaseUser
+from manager.managers import PersonManager
 from django.db import models
 
 
-class Person(models.Model):
+class Person(AbstractBaseUser):
+    objects = PersonManager()
 
     MAN = 0
     WOMAN = 1
@@ -21,8 +24,13 @@ class Person(models.Model):
     KYUSHU = 40
     OKINAWA = 45
 
+    identifier = models.CharField(max_length=64, unique=True, blank=False)
+    USERNAME_FIELD = 'identifier'
+
     # 名前
     name = models.CharField(max_length=128)
+    email = models.EmailField()
+    is_active = models.BooleanField(default=True)
     # 誕生日
     birthday = models.DateTimeField()
     # 性別
@@ -31,8 +39,6 @@ class Person(models.Model):
     address_from = models.IntegerField()
     # 現住所
     current_address = models.IntegerField()
-    # メールアドレス
-    email = models.EmailField()
 
 
 class Manager(models.Model):

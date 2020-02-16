@@ -8,9 +8,11 @@ WORKDIR /usr/src/app
 RUN pip install --upgrade pip \  
 # testproject = <プロジェクトネーム>
 && pip install django \
-&& django-admin startproject manager_project . \
+&& pip install django-debug-toolbar \
+# && django-admin startproject manager_project . \
 # testapp = アプリネーム
-&& python manage.py startapp manager
+# && python manage.py startapp manager
+
 
 
 CMD ["/bin/ash"]

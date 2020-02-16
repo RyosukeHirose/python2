@@ -8,8 +8,14 @@ services:
     # データを永続化させる場合の設定。`host:container`でパスを記載  
     volumes:  
         - .:/usr/src/app 
+        - ~/.ssh/id_rsa:/home/user/.ssh/id_rsa
+
     # 開放するポートを指定 
     ports:  
         - 8000:8000 
     tty: true
     stdin_open: true
+
+    #　環境構築後
+    # gitのセットアップand clone
+
